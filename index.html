@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="main.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+  </head>
+  <body>
+    <div class="overwall">
+      <header role="banner">
+        <div class="banner-container" role="navigation">
+          <a class="logo" href="#">Weatherfy</a>
+        </div>
+      </header>
+      <section class="feature">
+        <img alt="cafe background and a wooden table" class="background" src= "https://wallpaperscraft.com/image/light_stain_shadow_background_46791_2560x1600.jpg">
+        <div class="container">
+          <h1>Check the local weather</h1>
+          <h2>play perfect music!</h2>
+          <section class="enterText">
+            <form class="form-container">
+              <label for="findCity"></label>
+              <input type="text" name="findCity" id="findCity" placeholder="Enter city name (ex. Seattle)"/>
+              <button type="submit" id="submit">Check the weather</button>
+            </form>
+          </section>
+        </div>
+      </section>
+    </div>
+    <section class="result-container">
+      <div class= "weather-box">
+        <div class="description-box">
+          <h3 class="cityName"></h3>
+          <h3 class="temp"></h3>
+          <h3 class="description"></h3>
+          <div id="icon"></div>
+        </div> 
+        <button type="submit" id="findMusic">Fetch Music</button>
+      </div>
+    </section>
+    <section class="lastFM">
+      <div class='musicInfo-container'>
+        <div class="artistName"></div>
+        <div class="albumName"></div>
+        <div class="albumImage"></div>
+      </div>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,162 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: 'Poppins', sans-serif;
+}
+
+body{
+	max-width: 1300px;
+	width: 100%;
+	height: 750px;
+	background-image: url("http://cultureshockdc.org/wp-content/uploads/2013/06/background.jpg");
+}
+
+
+header{
+	position: absolute;
+	left:1.2em;
+	top: 1em;
+}
+
+h1 {
+	margin-bottom: 0;
+	font-size: 4.5em;
+	text-align: center;
+}
+
+h2{
+	font-size: 2.5em;
+    display: inline-block;
+    border-top: 3px solid white;
+    position: absolute;
+    left: 30%;
+    right: 30%;
+    margin-bottom: 0.5em;
+    text-align: center;
+}
+
+.enterText{
+	margin-top: 5em;
+}
+
+.logo{
+	text-decoration: none;
+    color: #5cd65c;
+    font-weight: bold;
+    font-size: 2em;
+    border: 3px solid;
+    padding: 0.15em;
+    position: absolute;
+    border-radius: 0.2em;
+    top: 0.4em;
+    left: 0.3em;
+}
+
+.overwall{
+	width: 100%;
+}
+
+
+.background{
+	width: 100%;
+	height: 745px;
+
+}
+
+.container{
+	position: absolute;
+	top: 38%;
+	max-width: 100%;
+	left: 7%;
+	right: 7%;
+	color: white;
+}
+
+#findCity{
+	font-size: 23px;	
+	border-radius: 0.2em;
+	width: 36%;
+	margin-left: 25%;
+	padding-left: 10px;
+	border: 3px solid #000066;
+	float: left;
+	position: relative;
+	background-color: #f8f8f8;
+}
+
+.result-container{
+	height: 700px;
+	width: 100%;
+	background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDVLTEVgGGWSVF2k18oyj1Y3n69tCi_Rt1MThzIIeJ81Diplr9EQ");
+	background-repeat: no-repeat;
+	background-size:cover;
+}
+
+.weather-box{
+	position: absolute;
+    left: 50%;
+    right: 50%;
+    top: 40%;
+    height: 30%;
+    width: 45%;
+    margin: -15% 0 0 -25%;
+}
+
+.description-box{
+	text-align: center; 
+	color: white;
+	border: 3px solid white;
+    border-radius: 3.5em;
+}
+
+.cityName{
+	font-size: 4em;
+    border-bottom: 3px solid white;
+    display: inline-block;
+}
+
+.temp{
+	    font-size: 6.5em;
+}
+
+.description{
+	font-size: 3em;
+	margin-top: -0.3em;
+
+}
+
+#submit{
+	border: 3px solid #000066;
+	background: #000066;
+	color: white;
+	border-radius: 0.3em;
+	font-size: 14px;
+	cursor: pointer;
+	width: 154px;
+	float: left;
+	height: 40px;
+	left: 57%;
+	position: absolute;
+}
+
+
+#icon img{
+	width: 100px;
+}
+
+#findMusic{
+	width: 45%;
+    background: white;
+    font-size: 1.5em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1.3em;
+    border-radius: 3em;
+}
+
+.musicInfo-container{
+	display: inline-block;
+	float:left;
+}
