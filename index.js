@@ -2,7 +2,7 @@
 
 function getApiMusic(searchMusic){
   $.ajax({
-    url: 'http://ws.audioscrobbler.com/2.0/?method=tag.gettopalbums&tag=' +searchMusic + '&limit=3'+ '&api_key=5a30f7116e53053e67095ee979140325' + '&format=json',
+    url: 'http://ws.audioscrobbler.com/2.0/?method=tag.gettopalbums&tag=' +searchMusic + '&limit=6'+ '&api_key=5a30f7116e53053e67095ee979140325' + '&format=json',
     type: 'GET',
     success: function(data){
       console.log(data);
@@ -18,15 +18,18 @@ function getApiMusic(searchMusic){
 }
 
 function displayMusic(data) {
-  
-  let albumName = data.albums.album[0].name;
-  let albumURL=data.albums.album[0].image[3]["#text"];
-  let artistInfo=data.albums.album[0].artist.name;
+  $.each(data.albums.album, function(index, item) {
 
-  $('.artistName').append(artistInfo);
-  $('.albumName').append(albumName);
-  $('.albumImage').html('<img src="'+albumURL+'">');
+  let albumURL=data.albums.album[index].url;
+  let albumName = data.albums.album[index].name;
+  let albumCoverURL=data.albums.album[index].image[3]["#text"];
+  let artistInfo=data.albums.album[index].artist.name;
 
+  $('.artistName').append("Artist Name: " + artistInfo);
+  $('.albumName').append("Album Name: " + albumName);
+  // $('#albumURL').append(albumURL);
+  $('.albumImage').append('<img src="'+albumCoverURL+'"  >');
+ })
   }
 
 
@@ -37,6 +40,16 @@ function handleSearchMusic(){
     let tag = $('.description').html();
     console.log(tag);
     getApiMusic(tag);
+  })
+}
+
+function handleDifferentCity(){
+  $('#differentCity').on('click', function(event){
+    event.preventDefault();
+    $('.cityName').html("");
+    $('.temp').html("");
+    $('.description').html("");
+    initialPage();
   })
 }
 
@@ -69,6 +82,7 @@ function displayResult(data) {
   $('.description').append(weatherDescription);
   $('#icon').html("<img src='http://openweathermap.org/img/w/" + data.weather[0].icon + ".png' alt='Icon depicting current weather.'>" );
   $(handleSearchMusic);
+  $(handleDifferentCity);
 }
 
 function handleSubmit() {
@@ -86,6 +100,12 @@ function handleSubmit() {
 function loadPage(){
   handleSubmit();
   $('.result-container').hide();
+}
+
+function initialPage(){
+    $('.overwall').show();
+    $('.result-container').hide(); 
+    $('.lastFM').hide();
 }
 
 $(loadPage);

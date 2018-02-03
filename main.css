@@ -9,7 +9,7 @@ body{
 	max-width: 1300px;
 	width: 100%;
 	height: 750px;
-	background-image: url("http://cultureshockdc.org/wp-content/uploads/2013/06/background.jpg");
+	background-image: url("https://wallpaperscraft.com/image/light_stain_shadow_background_46791_2560x1600.jpg");
 }
 
 
@@ -36,6 +36,7 @@ h2{
     text-align: center;
 }
 
+
 .enterText{
 	margin-top: 5em;
 }
@@ -55,6 +56,9 @@ h2{
 
 .overwall{
 	width: 100%;
+	background-image: url("https://wallpaperscraft.com/image/light_stain_shadow_background_46791_2560x1600.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 
@@ -62,6 +66,10 @@ h2{
 	width: 100%;
 	height: 745px;
 
+}
+
+.form-container{
+	max-width: 100%;
 }
 
 .container{
@@ -77,21 +85,13 @@ h2{
 	font-size: 23px;	
 	border-radius: 0.2em;
 	width: 36%;
-	margin-left: 25%;
+	margin-left: 390px;
 	padding-left: 10px;
 	border: 3px solid #000066;
 	float: left;
-	position: relative;
 	background-color: #f8f8f8;
 }
 
-.result-container{
-	height: 700px;
-	width: 100%;
-	background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDVLTEVgGGWSVF2k18oyj1Y3n69tCi_Rt1MThzIIeJ81Diplr9EQ");
-	background-repeat: no-repeat;
-	background-size:cover;
-}
 
 .weather-box{
 	position: absolute;
@@ -127,17 +127,14 @@ h2{
 }
 
 #submit{
-	border: 3px solid #000066;
-	background: #000066;
-	color: white;
-	border-radius: 0.3em;
-	font-size: 14px;
-	cursor: pointer;
-	width: 154px;
-	float: left;
-	height: 40px;
-	left: 57%;
-	position: absolute;
+    border: 3px solid #000066;
+    background: #000066;
+    color: white;
+    border-radius: 0.3em;
+    font-size: 14px;
+    cursor: pointer;
+    width: 154px;
+    height: 40px;
 }
 
 
@@ -156,6 +153,16 @@ h2{
     border-radius: 3em;
 }
 
+#differentCity{
+	width: 45%;
+    background: white;
+    font-size: 1em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1.3em;
+    border-radius: 3em;
+}
 .musicInfo-container{
 	display: inline-block;
 	float:left;

@@ -11,22 +11,19 @@
     <div class="overwall">
       <header role="banner">
         <div class="banner-container" role="navigation">
-          <a class="logo" href="#">Weatherfy</a>
+          <a class="logo" href="file:///Users/SJCHO/myprojects/CAPSTONE/index.html">Weatherfy</a>
         </div>
       </header>
-      <section class="feature">
-        <img alt="cafe background and a wooden table" class="background" src= "https://wallpaperscraft.com/image/light_stain_shadow_background_46791_2560x1600.jpg">
-        <div class="container">
+        <section class="container">
           <h1>Check the local weather</h1>
-          <h2>play perfect music!</h2>
+          <h2>Get perfect music!</h2>
           <section class="enterText">
             <form class="form-container">
               <label for="findCity"></label>
               <input type="text" name="findCity" id="findCity" placeholder="Enter city name (ex. Seattle)"/>
-              <button type="submit" id="submit">Check the weather</button>
             </form>
+            <button type="submit" id="submit">Check the weather</button>
           </section>
-        </div>
       </section>
     </div>
     <section class="result-container">
@@ -38,13 +35,16 @@
           <div id="icon"></div>
         </div> 
         <button type="submit" id="findMusic">Fetch Music</button>
+        <button type="submit" id="differentCity">Try different city?</button>
       </div>
     </section>
     <section class="lastFM">
       <div class='musicInfo-container'>
         <div class="artistName"></div>
         <div class="albumName"></div>
-        <div class="albumImage"></div>
+        <a href ="#" id="albumURL">
+          <div class="albumImage"></div>
+        </a>
       </div>
     </section>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
