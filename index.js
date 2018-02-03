@@ -1,8 +1,6 @@
-
-
 function getApiMusic(searchMusic){
   $.ajax({
-    url: 'http://ws.audioscrobbler.com/2.0/?method=tag.gettopalbums&tag=' +searchMusic + '&limit=6'+ '&api_key=5a30f7116e53053e67095ee979140325' + '&format=json',
+    url: 'http://ws.audioscrobbler.com/2.0/?method=tag.gettopalbums&tag=' +searchMusic + '&limit=12'+ '&api_key=5a30f7116e53053e67095ee979140325' + '&format=json',
     type: 'GET',
     success: function(data){
       console.log(data);
@@ -24,11 +22,23 @@ function displayMusic(data) {
   let albumName = data.albums.album[index].name;
   let albumCoverURL=data.albums.album[index].image[3]["#text"];
   let artistInfo=data.albums.album[index].artist.name;
+  console.log(albumCoverURL);
+  if (albumCoverURL === "") {
+    albumCoverURL = "http://shashgrewal.com/wp-content/uploads/2015/05/default-placeholder-300x300.png";
+  }
 
-  $('.artistName').append("Artist Name: " + artistInfo);
-  $('.albumName').append("Album Name: " + albumName);
-  // $('#albumURL').append(albumURL);
-  $('.albumImage').append('<img src="'+albumCoverURL+'"  >');
+  let template = 
+      `
+      <div class='musicInfo-container col-4'>
+        <a href ="${albumURL}" class="albumURL" target="_blank">
+          <div class="albumImage"><img src="${albumCoverURL}"/></div>
+        </a>
+        <div class="textbox col-12"> 
+          <div class="artistName">Artist Name: ${artistInfo}</div>
+          <div class="albumName">Album Name: ${albumName}</div>
+        </div>
+      </div>`
+      $('#lastFM').append(template);
  })
   }
 
@@ -38,6 +48,7 @@ function handleSearchMusic(){
     event.preventDefault();
     console.log("handleSearchMusic ran");
     let tag = $('.description').html();
+    $('.description').html("");
     console.log(tag);
     getApiMusic(tag);
   })
@@ -50,6 +61,7 @@ function handleDifferentCity(){
     $('.temp').html("");
     $('.description').html("");
     initialPage();
+    $('.result-container').hide();
   })
 }
 
@@ -64,9 +76,7 @@ function getApiWeather(searchCity){
     },
     error: function(data){
       alert("Please enter correct city name");
-      $('.overwall').show();
-      $('result-container').hide();
-      loadPage();
+      initialPage();
     }
   })
 }
@@ -91,24 +101,26 @@ function handleSubmit() {
     console.log("handleSubmit ran");
     let cityName = $('#findCity').val();
     $('#findCity').val("");
+    if (cityName == "") {
+      alert ("Please enter city name");
+    } else {
     getApiWeather(cityName, displayResult);
     $('.overwall').hide();
     $('.result-container').show(); 
+    }
+ 
   })
 }
 
-function loadPage(){
-  handleSubmit();
-  $('.result-container').hide();
-}
 
 function initialPage(){
     $('.overwall').show();
-    $('.result-container').hide(); 
+    $('.result-container').hide();
     $('.lastFM').hide();
+    handleSubmit();
 }
 
-$(loadPage);
+$(initialPage);
 
 
 

@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>repl.it</title>
+    <link rel="stylesheet" href="grid.css" />
     <link href="main.css" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
   </head>
@@ -14,16 +15,18 @@
           <a class="logo" href="file:///Users/SJCHO/myprojects/CAPSTONE/index.html">Weatherfy</a>
         </div>
       </header>
-        <section class="container">
+      <section class="container">
+        <section>
           <h1>Check the local weather</h1>
           <h2>Get perfect music!</h2>
-          <section class="enterText">
-            <form class="form-container">
-              <label for="findCity"></label>
-              <input type="text" name="findCity" id="findCity" placeholder="Enter city name (ex. Seattle)"/>
-            </form>
+        </section>
+        <section class="enterText">
+          <form class="form-container">
+            <label for="findCity"></label>
+            <input type="text" name="findCity" id="findCity" placeholder="Enter city name (ex. Seattle)"/>
             <button type="submit" id="submit">Check the weather</button>
-          </section>
+          </form>
+        </section>
       </section>
     </div>
     <section class="result-container">
@@ -38,14 +41,7 @@
         <button type="submit" id="differentCity">Try different city?</button>
       </div>
     </section>
-    <section class="lastFM">
-      <div class='musicInfo-container'>
-        <div class="artistName"></div>
-        <div class="albumName"></div>
-        <a href ="#" id="albumURL">
-          <div class="albumImage"></div>
-        </a>
-      </div>
+    <section id="lastFM">
     </section>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="index.js"></script>
