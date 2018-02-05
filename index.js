@@ -39,18 +39,6 @@ function displayMusic(data) {
   handleTryAgain();
   }
 
-function handleTryAgain(){
-  $('#tryAgain').on('click', function(event){
-    event.preventDefault();
-    $('.cityName').html("");
-    $('.temp').html("");
-    $('.description').html("");
-    $('#lastFM').html("");
-    console.log("tryAgain ran");
-    initialPage();
-  })
-}
-
 function handleSearchMusic(){
   $('#findMusic').on('click', function(event){
     event.preventDefault();
@@ -69,7 +57,7 @@ function getApiWeather(searchCity){
     dataType: 'jsonp',
     success: function(data){
       console.log(data);
-      displayResult(data);
+      displayWeatherResult(data);
     },
     error: function(data){
       alert("Please enter correct city name");
@@ -78,8 +66,7 @@ function getApiWeather(searchCity){
   })
 }
 
-
-function displayResult(data) {
+function displayWeatherResult(data) {
   let weatherDescription = data.weather[0].main;
   let currentTemp = data.main.temp;
   let cityName=data.name;
@@ -91,18 +78,33 @@ function displayResult(data) {
   handleSearchMusic();
 }
 
+function reset(){
+    $('.cityName').html("");
+    $('.temp').html("");
+    $('.description').html("");
+    $('#lastFM').html("");
+}
+
+function handleTryAgain(){
+  $('#tryAgain').on('click', function(event){
+    event.preventDefault();
+    console.log("tryAgain ran");
+    reset();
+    initialPage();
+  })
+}
+
 function handleSubmit() {
   $('#submit').on('click', function(event){
     event.preventDefault();
     event.stopPropagation();
     console.log("handleSubmit ran");
     let cityName = $('#findCity').val();
-    let Name= $('#findCity').val("");
-    console.log(Name);
+    $('#findCity').val('');
     if (cityName == "") {
       alert ("Please enter city name");
     } else {
-    getApiWeather(cityName, displayResult);
+    getApiWeather(cityName, displayWeatherResult);
     $('.overwall').hide();
     $('.result-container').show(); 
   }

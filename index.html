@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>repl.it</title>
+    <title>WeatherFy</title>
     <link rel="stylesheet" href="grid.css" />
     <link href="main.css" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
@@ -35,14 +35,13 @@
     </div>
     <section class="result-container">
       <div class= "weather-box">
-        <div class="description-box">
+        <div class="description-box" aria-live="assertive" hidden">
           <h3 class="cityName"></h3>
           <h3 class="temp"></h3>
           <h3 class="description"></h3>
           <div id="icon"></div>
         </div> 
         <button type="submit" id="findMusic">Fetch Music</button>
-<!--         <button type="submit" id="differentCity">Try different city?</button> -->
       </div>
     </section>
     <section id="lastFM">
