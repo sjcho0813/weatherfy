@@ -5,13 +5,9 @@ function getApiMusic(searchMusic){
     success: function(data){
       console.log(data);
       displayMusic(data);
-    },
-    error: function(data){
-      //error msg//
     }
-
   })
-  $('.lastFM').show();
+  $('#lastFM').show();
   $('.result-container').hide();
 }
 
@@ -26,7 +22,6 @@ function displayMusic(data) {
   if (albumCoverURL === "") {
     albumCoverURL = "http://shashgrewal.com/wp-content/uploads/2015/05/default-placeholder-300x300.png";
   }
-
   let template = 
       `
       <div class='musicInfo-container col-4'>
@@ -40,8 +35,21 @@ function displayMusic(data) {
       </div>`
       $('#lastFM').append(template);
  })
+  $('#lastFM').append(`<button type="submit" id="tryAgain">Try different city?</button>`);
+  handleTryAgain();
   }
 
+function handleTryAgain(){
+  $('#tryAgain').on('click', function(event){
+    event.preventDefault();
+    $('.cityName').html("");
+    $('.temp').html("");
+    $('.description').html("");
+    $('#lastFM').html("");
+    console.log("tryAgain ran");
+    initialPage();
+  })
+}
 
 function handleSearchMusic(){
   $('#findMusic').on('click', function(event){
@@ -51,17 +59,6 @@ function handleSearchMusic(){
     $('.description').html("");
     console.log(tag);
     getApiMusic(tag);
-  })
-}
-
-function handleDifferentCity(){
-  $('#differentCity').on('click', function(event){
-    event.preventDefault();
-    $('.cityName').html("");
-    $('.temp').html("");
-    $('.description').html("");
-    initialPage();
-    $('.result-container').hide();
   })
 }
 
@@ -91,32 +88,31 @@ function displayResult(data) {
   $('.temp').append(currentTemp + ' &#8457;');
   $('.description').append(weatherDescription);
   $('#icon').html("<img src='http://openweathermap.org/img/w/" + data.weather[0].icon + ".png' alt='Icon depicting current weather.'>" );
-  $(handleSearchMusic);
-  $(handleDifferentCity);
+  handleSearchMusic();
 }
 
 function handleSubmit() {
   $('#submit').on('click', function(event){
     event.preventDefault();
+    event.stopPropagation();
     console.log("handleSubmit ran");
     let cityName = $('#findCity').val();
-    $('#findCity').val("");
+    let Name= $('#findCity').val("");
+    console.log(Name);
     if (cityName == "") {
       alert ("Please enter city name");
     } else {
     getApiWeather(cityName, displayResult);
     $('.overwall').hide();
     $('.result-container').show(); 
-    }
- 
+  }
   })
 }
-
 
 function initialPage(){
     $('.overwall').show();
     $('.result-container').hide();
-    $('.lastFM').hide();
+    $('#lastFM').hide();
     handleSubmit();
 }
 
