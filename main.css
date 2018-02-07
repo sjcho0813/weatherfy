@@ -143,7 +143,7 @@ h2{
 	width: 100px;
 }
 
-#findMusic /*#differentCity*/{
+#findMusic{
 	width: 30%;
     background: white;
     font-size: 1.5em;
@@ -161,6 +161,7 @@ h2{
     float: left;
     margin: 60px 0;
     height: 315px;
+    padding-top: 7px;
 }
 
 .musicInfo-container:hover{
@@ -177,6 +178,7 @@ h2{
     border: 2px solid white;
     background: black;
     width: 300px;
+    margin-top: 10px;
 }
 
 .artistName, .albumName{
@@ -240,7 +242,7 @@ h2 {
 	font-size: 4em;
 }
 
-#findMusic /*#differentCity*/ {
+#findMusic{
 	width: 70%;
 }
 

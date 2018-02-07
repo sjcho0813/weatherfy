@@ -86,6 +86,7 @@ function reset(){
 }
 
 function handleTryAgain(){
+  console.log($('#tryAgain'));
   $('#tryAgain').on('click', function(event){
     event.preventDefault();
     console.log("tryAgain ran");
@@ -115,10 +116,15 @@ function initialPage(){
     $('.overwall').show();
     $('.result-container').hide();
     $('#lastFM').hide();
-    handleSubmit();
+    
 }
 
-$(initialPage);
+function start(){
+  initialPage();
+  handleSubmit();
+}
+
+$(start);
 
 
 
