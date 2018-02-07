@@ -12,7 +12,7 @@ Weather Page:
 
 Music Album Page:
 
-![Image of Album Page](screenshots/Music%20Page.png)
+![Image of Album Page](screenshots/Album%20Page.png)
 
 ## Built with 
 
