@@ -21,7 +21,6 @@ function getApiWeather(searchCity){
     type: 'GET',
     dataType: 'jsonp',
     success: function(data){
-      console.log(data);
       displayWeatherResult(data);
     },
     error: function(data){
@@ -33,10 +32,8 @@ function getApiWeather(searchCity){
 function handleSearchMusic(){
   $('#findMusic').on('click', function(event){
     event.preventDefault();
-    console.log("handleSearchMusic ran");
     let tag = $('.description').html();
     $('.description').html("");
-    console.log(tag);
     getApiMusic(tag);
   })
 }
@@ -46,7 +43,6 @@ function getApiMusic(searchMusic){
     url: 'http://ws.audioscrobbler.com/2.0/?method=tag.gettopalbums&tag=' +searchMusic + '&limit=12'+ '&api_key=5a30f7116e53053e67095ee979140325' + '&format=json',
     type: 'GET',
     success: function(data){
-      console.log(data);
       displayMusic(data);
     }
   })
@@ -86,7 +82,6 @@ function handleSubmitButton(){
   $('#submit').on('click', function(event){
     event.preventDefault();
     event.stopPropagation();
-    console.log("handleSubmit ran");
     let cityName = $('#findCity').val();
     $('#findCity').val('');
     if (cityName == "") {
@@ -109,7 +104,6 @@ function resetPage(){
 function handleRetry(){
   $('#tryAgain').on('click', function(event){
     event.preventDefault();
-    console.log("tryAgain ran");
     resetPage();
     beginPage();
 })
