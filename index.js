@@ -1,3 +1,46 @@
+function beginPage(){
+  $('.overwall').show();
+    $('.result-container').hide();
+    $('#lastFM').hide();
+}
+
+function displayWeatherResult(data) {
+  let weatherDescription = data.weather[0].main;
+  let currentTemp = data.main.temp;
+  let cityName=data.name;
+
+  $('.cityName').append(cityName);
+  $('.temp').append(currentTemp + ' &#8457;');
+  $('.description').append(weatherDescription);
+  $('#icon').html("<img src='http://openweathermap.org/img/w/" + data.weather[0].icon + ".png' alt='Icon depicting current weather.'>" );
+}
+
+function getApiWeather(searchCity){
+  $.ajax({
+    url: 'http://api.openweathermap.org/data/2.5/weather?q=' +searchCity + ',US' + '&units=imperial' + '&appid=6dd9b6459ecd464f6ed3906d08b28184',
+    type: 'GET',
+    dataType: 'jsonp',
+    success: function(data){
+      console.log(data);
+      displayWeatherResult(data);
+    },
+    error: function(data){
+      alert("Please enter correct city name");
+    }
+  })
+}
+
+function handleSearchMusic(){
+  $('#findMusic').on('click', function(event){
+    event.preventDefault();
+    console.log("handleSearchMusic ran");
+    let tag = $('.description').html();
+    $('.description').html("");
+    console.log(tag);
+    getApiMusic(tag);
+  })
+}
+
 function getApiMusic(searchMusic){
   $.ajax({
     url: 'http://ws.audioscrobbler.com/2.0/?method=tag.gettopalbums&tag=' +searchMusic + '&limit=12'+ '&api_key=5a30f7116e53053e67095ee979140325' + '&format=json',
@@ -34,68 +77,12 @@ function displayMusic(data) {
         </div>
       </div>`
       $('#lastFM').append(template);
+
+
  })
-  $('#lastFM').append(`<button type="submit" id="tryAgain">Try different city?</button>`);
-  handleTryAgain();
-  }
-
-function handleSearchMusic(){
-  $('#findMusic').on('click', function(event){
-    event.preventDefault();
-    console.log("handleSearchMusic ran");
-    let tag = $('.description').html();
-    $('.description').html("");
-    console.log(tag);
-    getApiMusic(tag);
-  })
-}
-
-function getApiWeather(searchCity){
-  $.ajax({
-    url: 'http://api.openweathermap.org/data/2.5/weather?q=' +searchCity + ',US' + '&units=imperial' + '&appid=6dd9b6459ecd464f6ed3906d08b28184',
-    type: 'GET',
-    dataType: 'jsonp',
-    success: function(data){
-      console.log(data);
-      displayWeatherResult(data);
-    },
-    error: function(data){
-      alert("Please enter correct city name");
-      initialPage();
     }
-  })
-}
 
-function displayWeatherResult(data) {
-  let weatherDescription = data.weather[0].main;
-  let currentTemp = data.main.temp;
-  let cityName=data.name;
-
-  $('.cityName').append(cityName);
-  $('.temp').append(currentTemp + ' &#8457;');
-  $('.description').append(weatherDescription);
-  $('#icon').html("<img src='http://openweathermap.org/img/w/" + data.weather[0].icon + ".png' alt='Icon depicting current weather.'>" );
-  handleSearchMusic();
-}
-
-function reset(){
-    $('.cityName').html("");
-    $('.temp').html("");
-    $('.description').html("");
-    $('#lastFM').html("");
-}
-
-function handleTryAgain(){
-  console.log($('#tryAgain'));
-  $('#tryAgain').on('click', function(event){
-    event.preventDefault();
-    console.log("tryAgain ran");
-    reset();
-    initialPage();
-  })
-}
-
-function handleSubmit() {
+function handleSubmitButton(){
   $('#submit').on('click', function(event){
     event.preventDefault();
     event.stopPropagation();
@@ -112,21 +99,33 @@ function handleSubmit() {
   })
 }
 
+
+function resetPage(){
+  $('.cityName').html("");
+    $('.temp').html("");
+    $('.description').html("");
+}
+
+function handleRetry(){
+  $('#tryAgain').on('click', function(event){
+    event.preventDefault();
+    console.log("tryAgain ran");
+    resetPage();
+    beginPage();
+})
+}
+
+
 function initialPage(){
-    $('.overwall').show();
-    $('.result-container').hide();
-    $('#lastFM').hide();
-    
+    handleSubmitButton();
+    handleSearchMusic();
+    beginPage();
+    handleRetry();
 }
 
-function start(){
+$(function(){
   initialPage();
-  handleSubmit();
-}
-
-$(start);
-
-
+});
 
 // Application name  My application
 // API key 5a30f7116e53053e67095ee979140325
