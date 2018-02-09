@@ -40,7 +40,7 @@ function handleSearchMusic(){
 
 function getApiMusic(searchMusic){
   $.ajax({
-    url: 'http://ws.audioscrobbler.com/2.0/?method=tag.gettopalbums&tag=' +searchMusic + '&limit=12'+ '&api_key=5a30f7116e53053e67095ee979140325' + '&format=json',
+    url: 'https://ws.audioscrobbler.com/2.0/?method=tag.gettopalbums&tag=' +searchMusic + '&limit=12'+ '&api_key=5a30f7116e53053e67095ee979140325' + '&format=json',
     type: 'GET',
     success: function(data){
       displayMusic(data);
