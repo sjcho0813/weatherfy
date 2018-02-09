@@ -17,7 +17,7 @@ function displayWeatherResult(data) {
 
 function getApiWeather(searchCity){
   $.ajax({
-    url: 'http://api.openweathermap.org/data/2.5/weather?q=' +searchCity + ',US' + '&units=imperial' + '&appid=6dd9b6459ecd464f6ed3906d08b28184',
+    url: 'https://api.openweathermap.org/data/2.5/weather?q=' +searchCity + ',US' + '&units=imperial' + '&appid=6dd9b6459ecd464f6ed3906d08b28184',
     type: 'GET',
     dataType: 'jsonp',
     success: function(data){
